@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() 
+{
+    int N;
+    scanf("%d", &N);
+
+    double TC = 0.0;  // TOTAL_CONSUMIDO
+    double TG = 0.0;  // TOTAL_GASTO
+
+    for (int I = 1; I <= N; I++) 
+    {
+        double DG;  // DINHEIRO_GASTO
+        scanf("%lf", &DG);
+
+        char F[1000];  // FRUTAS
+        getchar();
+        fgets(F, sizeof(F), stdin);
+        F[strlen(F) - 1] = '\0';
+
+        char *FR = strtok(F, " ");  // FRUTA
+        int DC = 0;  // DIA_CONSUMO
+
+        while (FR != NULL) 
+        {
+            DC++;
+            FR = strtok(NULL, " ");
+        }
+
+        double KC = (double)DC;  // KG_CONSUMIDOS
+
+        TC += KC;
+        TG += DG;
+
+        printf("dia %d: %.0lf kg\n", I, KC);
+    }
+
+    double CM = TC / N;  // CONSUMO_MEDIO
+    double MG = TG / N;  // MEDIA_GASTA
+
+    printf("%.2lf kg por dia\n", CM);
+    printf("R$ %.2lf por dia\n", MG);
+
+    return 0;
+}
