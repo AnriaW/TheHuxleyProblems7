@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char M[1000], N[1000], soma[1000];
+    int i, j, k, tama, tamb, tams, aux = 0, ai, bi, s;
+
+    scanf("%1000s%*c", M);
+    scanf("%1000s%*c", N);
+
+    tama = strlen(M);
+    tamb = strlen(N);
+
+    tams = (tama > tamb) ? tama : tamb + 1;
+
+    soma[tams] = '\0';
+    for (i = tama - 1, j = tamb - 1, k = tams - 1; k >= 0; i--, j--, k--) {
+        if (i >= 0) {
+            ai = M[i] - '0';
+        } else {
+            ai = 0;
+        }
+
+        if (j >= 0) {
+            bi = N[j] - '0';
+        } else {
+            bi = 0;
+        }
+
+        s = ai + bi + aux;
+        soma[k] = (s % 10) + '0';
+        aux = s / 10;
+    }
+
+    if (soma[0] == '0') {
+        for (i = 0; soma[i]; i++) {
+            soma[i] = soma[i + 1];
+        }
+    }
+
+    printf("%s\n", soma);
+
+    return 0;
+}
