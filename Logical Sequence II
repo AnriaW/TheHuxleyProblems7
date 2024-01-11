@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+int main(){
+    int x, y;
+    scanf("%d %d", &x, &y);
+    int i = 0;
+    
+    while (i < y){
+
+        i++;
+
+        if ( i % x == 0){
+            printf("%d\n", i);
+        }
+        else{
+            printf("%d ", i);
+        }
+    }
+}
